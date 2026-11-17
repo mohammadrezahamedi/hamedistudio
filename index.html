@@ -161,21 +161,21 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-s
   <h2>Simple pricing</h2><p class="lead">Pick a plan. Start small, grow when ready.</p>
   <div class="toggle" role="group" aria-label="Billing period">
     <button id="bMonthly" type="button">Monthly</button>
-    <button id="bAnnual" class="on" type="button">12 months &middot; Save 29%</button>
+    <button id="bAnnual" class="on" type="button">12 months &middot; Save 20%</button>
   </div>
   <div class="grid g3">
     <div class="card price">
       <h3>STARTER</h3>
-      <div class="amt">80 OMR <small>/ headset / month</small></div>
-      <div class="sub">Billed monthly</div>
+      <div class="amt"><span id="stAmt">64 OMR</span> <small>/ headset / month</small></div>
+      <div class="sub" id="stSub">12-month plan, save <b>20%</b></div>
       <ul><li>Hazard-spotting &amp; safety scenarios</li><li>Arabic / English / Hindi-Urdu</li><li>Trainee reports &amp; certificates</li><li>Free bug fixes &amp; updates</li></ul>
       <a class="btn" href="#" data-mail="Start Pilot (Starter)">Start Pilot</a>
     </div>
     <div class="card price pop">
       <div class="badge">MOST POPULAR</div>
       <h3>PROFESSIONAL</h3>
-      <div class="amt"><span id="proAmt">67 OMR</span> <small>/ headset / month</small></div>
-      <div class="sub" id="proSub">12-month plan, save <b>29%</b></div>
+      <div class="amt"><span id="proAmt">76 OMR</span> <small>/ headset / month</small></div>
+      <div class="sub" id="proSub">12-month plan, save <b>20%</b></div>
       <ul><li>Everything in Starter</li><li>Onboarding included</li><li>Priority support</li><li>1 on-site training session per year</li></ul>
       <a class="btn p" href="#" data-mail="Get Started (Professional)">Get Started</a>
     </div>
@@ -244,8 +244,11 @@ document.getElementById("cLinked").href = LINKEDIN;
 var bM = document.getElementById("bMonthly"), bA = document.getElementById("bAnnual");
 function setBilling(annual){
   bA.classList.toggle("on", annual); bM.classList.toggle("on", !annual);
-  document.getElementById("proAmt").textContent = annual ? "67 OMR" : "95 OMR";
-  document.getElementById("proSub").innerHTML   = annual ? "12-month plan, save <b>29%</b>" : "Month to month, no commitment";
+  document.getElementById("proAmt").textContent = annual ? "76 OMR" : "95 OMR";
+  document.getElementById("stAmt").textContent  = annual ? "64 OMR" : "80 OMR";
+  var sub = annual ? "12-month plan, save <b>20%</b>" : "Month to month, no commitment";
+  document.getElementById("proSub").innerHTML = sub;
+  document.getElementById("stSub").innerHTML  = sub;
 }
 bM.onclick = function(){ setBilling(false); };
 bA.onclick = function(){ setBilling(true); };
