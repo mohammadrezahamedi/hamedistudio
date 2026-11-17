@@ -149,10 +149,6 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-s
 
 <section id="pricing"><div class="wrap center">
   <h2>Simple pricing</h2><p class="lead">Pick a plan. Start small, grow when ready.</p>
-  <div class="toggle" role="group" aria-label="Billing period">
-    <button id="bMonthly" class="on" type="button">Monthly</button>
-    <button id="bAnnual" type="button">Annual</button>
-  </div>
   <div class="grid g3">
     <div class="card price">
       <h3>STARTER</h3>
@@ -164,8 +160,8 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-s
     <div class="card price pop">
       <div class="badge">MOST POPULAR</div>
       <h3>PROFESSIONAL</h3>
-      <div class="amt"><span id="proAmt">67 OMR</span> <small id="proUnit">/ headset / month</small></div>
-      <div class="sub" id="proSub">Billed annually (800 OMR / year)</div>
+      <div class="amt"><span id="proAmt">800 OMR</span> <small id="proUnit">/ headset / year</small></div>
+      <div class="sub" id="proSub">Save <b>17%</b> vs monthly · about 67 OMR / month</div>
       <ul><li>Everything in Starter</li><li>Onboarding included</li><li>Priority support</li><li>1 on-site training session per year</li></ul>
       <a class="btn p" href="#" data-mail="Get Started (Professional)">Get Started</a>
     </div>
@@ -231,16 +227,6 @@ document.getElementById("cPhone").href  = waLink("I would like to know more.");
 document.getElementById("cPhone").target = "_blank";
 document.getElementById("cLinked").href = LINKEDIN;
 
-// Pricing toggle (Monthly view shows Professional as 67/month billed annually)
-var bM = document.getElementById("bMonthly"), bA = document.getElementById("bAnnual");
-function setBilling(annual){
-  bA.classList.toggle("on", annual); bM.classList.toggle("on", !annual);
-  document.getElementById("proAmt").textContent  = annual ? "800 OMR" : "67 OMR";
-  document.getElementById("proUnit").textContent = annual ? "/ headset / year" : "/ headset / month";
-  document.getElementById("proSub").innerHTML    = annual ? "Save <b>17%</b> vs monthly Starter" : "Billed annually (800 OMR / year)";
-}
-bM.onclick = function(){ setBilling(false); };
-bA.onclick = function(){ setBilling(true); };
 </script>
 </body>
 </html>
