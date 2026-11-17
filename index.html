@@ -108,7 +108,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-s
     <svg class="i" viewBox="0 0 24 24"><path d="M3 8h18v8a1 1 0 0 1-1 1h-4.5l-2-2.5h-3L8.5 17H4a1 1 0 0 1-1-1z"/><path d="M7 12h.01M17 12h.01"/></svg>
     Hamedi <span>Studio</span>
   </a>
-  <nav><a href="#train">Training</a><a href="#pricing">Pricing</a><a href="#addons">Add-ons</a><a href="#contact">Contact</a></nav>
+  <nav><a href="#train">Training</a><a href="#about">About</a><a href="#pricing">Pricing</a><a href="#addons">Add-ons</a><a href="#contact">Contact</a></nav>
   <a class="btn p" href="#" data-mail="Demo request">Book a Demo</a>
 </div></header>
 
@@ -147,8 +147,22 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-s
   </div>
 </div></section>
 
+<section id="about"><div class="wrap">
+  <div class="center"><h2>About us</h2><p class="lead">Hamedi Studio is a Muscat based XR studio. We build practical VR training that teams can start using quickly.</p></div>
+  <div class="grid g3">
+    <div class="card stat"><b>10+</b><p>years of experience in IT</p></div>
+    <div class="card stat"><b>2</b><p>years teaching XR to students in Canada, the USA and Australia</p></div>
+    <div class="card stat"><b>1</b><p>innovative healthcare project delivered in Canada</p></div>
+  </div>
+  <p class="lead center" style="margin:32px auto 0">Our founder also has an electrical engineering background, which helps us build safety scenarios that are technically accurate for real industrial sites.</p>
+</div></section>
+
 <section id="pricing"><div class="wrap center">
   <h2>Simple pricing</h2><p class="lead">Pick a plan. Start small, grow when ready.</p>
+  <div class="toggle" role="group" aria-label="Billing period">
+    <button id="bMonthly" type="button">Monthly</button>
+    <button id="bAnnual" class="on" type="button">12 months &middot; Save 17%</button>
+  </div>
   <div class="grid g3">
     <div class="card price">
       <h3>STARTER</h3>
@@ -160,8 +174,8 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-s
     <div class="card price pop">
       <div class="badge">MOST POPULAR</div>
       <h3>PROFESSIONAL</h3>
-      <div class="amt"><span id="proAmt">800 OMR</span> <small id="proUnit">/ headset / year</small></div>
-      <div class="sub" id="proSub">Save <b>17%</b> vs monthly · about 67 OMR / month</div>
+      <div class="amt"><span id="proAmt">67 OMR</span> <small>/ headset / month</small></div>
+      <div class="sub" id="proSub">12-month plan, save <b>17%</b></div>
       <ul><li>Everything in Starter</li><li>Onboarding included</li><li>Priority support</li><li>1 on-site training session per year</li></ul>
       <a class="btn p" href="#" data-mail="Get Started (Professional)">Get Started</a>
     </div>
@@ -227,6 +241,14 @@ document.getElementById("cPhone").href  = waLink("I would like to know more.");
 document.getElementById("cPhone").target = "_blank";
 document.getElementById("cLinked").href = LINKEDIN;
 
+var bM = document.getElementById("bMonthly"), bA = document.getElementById("bAnnual");
+function setBilling(annual){
+  bA.classList.toggle("on", annual); bM.classList.toggle("on", !annual);
+  document.getElementById("proAmt").textContent = annual ? "67 OMR" : "80 OMR";
+  document.getElementById("proSub").innerHTML   = annual ? "12-month plan, save <b>17%</b>" : "Month to month, no commitment";
+}
+bM.onclick = function(){ setBilling(false); };
+bA.onclick = function(){ setBilling(true); };
 </script>
 </body>
 </html>
